@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Блю Лок: курсы програмирования</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #050508;
+  color: #e0e0e0;
+  margin: 0;
+  padding: 20px;
+}
+.container { max-width: 1000px; margin: 0 auto; }
+.header {
+  text-align: center;
+  border-bottom: 3px solid #1e3a5f;
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+}
+.header h1 {
+  color: #4fc3f7;
+  font-size: 36px;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-shadow: 0 0 30px rgba(79,195,247,0.3);
+}
+.header p {
+  color: #78909c;
+  margin: 10px 0 0;
+  font-size: 15px;
+}
+.ego-section {
+  background: #0d0d14;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  border: 2px solid #1e3a5f;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.ego-photo {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #4fc3f7;
+  flex-shrink: 0;
+}
+.ego-quotes {
+  flex: 1;
+}
+.ego-quotes h2 {
+  color: #4fc3f7;
+  font-size: 18px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.ego-quotes .quote {
+  color: #b0bec5;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+  padding-left: 16px;
+  border-left: 3px solid #4fc3f7;
+  font-style: italic;
+}
+.ego-quotes .quote-author {
+  color: #78909c;
+  font-size: 12px;
+  text-align: right;
+  margin-top: -6px;
+  margin-bottom: 12px;
+}
+.stats {
+  display: flex;
+  justify-content: space-around;
+  background: #0d0d14;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  border: 1px solid #1e3a5f;
+}
+.stat { text-align: center; }
+.stat-val {
+  font-size: 40px;
+  font-weight: 900;
+  color: #4fc3f7;
+  text-shadow: 0 0 20px rgba(79,195,247,0.4);
+}
+.stat-label {
+  font-size: 11px;
+  color: #78909c;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+.ranks {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.rank {
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.rank-d { background: #263238; color: #b0bec5; border: 2px solid #4fc3f7; }
+.rank-c { background: #37474f; color: #cfd8dc; border: 2px solid #4fc3f7; }
+.rank-b { background: #0d47a1; color: #bbdefb; opacity: 0.35; }
+.rank-a { background: #4a148c; color: #e1bee7; opacity: 0.35; }
+.rank-s { background: #7f0000; color: #ffcdd2; opacity: 0.35; }
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #1e3a5f;
+  padding-bottom: 10px;
+  flex-wrap: wrap;
+}
+.tab {
+  background: transparent;
+  border: none;
+  color: #78909c;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border-bottom: 3px solid transparent;
+}
+.tab:hover { color: #4fc3f7; }
+.tab.active {
+  color: #4fc3f7;
+  border-bottom-color: #4fc3f7;
+}
+.section {
+  background: #0d0d14;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #1e3a5f;
+}
+.section h3 {
+  color: #4fc3f7;
+  margin: 0 0 16px;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.player {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: #08080f;
+  margin-bottom: 8px;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+.player:hover {
+  background: #12121f;
+  border-color: #1e3a5f;
+  transform: translateX(4px);
+}
+.player-rank {
+  width: 40px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 20px;
+}
+.gold { color: #ffd700; text-shadow: 0 0 10px rgba(255,215,0,0.4); }
+.silver { color: #c0c0c0; text-shadow: 0 0 10px rgba(192,192,192,0.4); }
+.bronze { color: #cd7f32; text-shadow: 0 0 10px rgba(205,127,50,0.4); }
+.top10 { color: #90a4ae; }
+.player-flag {
+  width: 36px;
+  text-align: center;
+  font-size: 22px;
+  margin: 0 10px;
+}
+.player-name {
+  flex: 1;
+  font-weight: 700;
+  font-size: 15px;
+}
+.player-name .arch {
+  font-size: 12px;
+  color: #78909c;
+  font-weight: 400;
+}
+.player-bar {
+  width: 120px;
+  height: 10px;
+  background: #1a1a2e;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0 12px;
+  border: 1px solid #1e3a5f;
+}
+.player-fill {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.6s;
+}
+.player-score {
+  width: 50px;
+  text-align: right;
+  font-weight: 800;
+  font-size: 16px;
+}
+.player-status {
+  width: 80px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-left: 10px;
+}
+.active-st { background: #1b5e20; color: #a5d6a7; }
+.danger-st { background: #bf360c; color: #ffcc80; }
+.elim-st { background: #3e2723; color: #8d6e63; text-decoration: line-through; }
+.you {
+  border: 2px solid #4fc3f7 !important;
+  background: #0a1628 !important;
+  box-shadow: 0 0 20px rgba(79,195,247,0.15);
+}
+.you .player-name { color: #4fc3f7; }
+.nation-filter {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.nation-btn {
+  background: #0d0d14;
+  border: 1px solid #1e3a5f;
+  color: #78909c;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.nation-btn:hover, .nation-btn.active {
+  background: #1565c0;
+  color: #fff;
+  border-color: #1565c0;
+}
+.phase-card {
+  background: #08080f;
+  padding: 18px;
+  border-radius: 10px;
+  border-left: 5px solid;
+  margin-bottom: 12px;
+  transition: all 0.2s;
+}
+.phase-card:hover { transform: translateY(-3px); }
+.phase-d { border-color: #78909c; }
+.phase-c { border-color: #90a4ae; }
+.phase-b { border-color: #42a5f5; }
+.phase-a { border-color: #ab47bc; }
+.phase-s { border-color: #ef5350; }
+.phase-card h4 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  color: #fff;
+  text-transform: uppercase;
+}
+.phase-card p {
+  margin: 0;
+  font-size: 13px;
+  color: #78909c;
+  line-height: 1.6;
+}
+.phase-deadline {
+  color: #ef5350;
+  font-weight: 800;
+  margin-top: 12px;
+  font-size: 13px;
+}
+.checklist {
+  background: #08080f;
+  padding: 18px;
+  border-radius: 10px;
+}
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #1a1a2e;
+  font-size: 14px;
+  cursor: pointer;
+}
+.check-item:last-child { border-bottom: none; }
+.check-item input { width: 20px; height: 20px; accent-color: #4fc3f7; }
+.btn {
+  background: #1565c0;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 800;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  width: 100%;
+  margin-top: 16px;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+.btn:hover {
+  background: #1976d2;
+  box-shadow: 0 0 30px rgba(21,101,192,0.5);
+  transform: translateY(-2px);
+}
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-top: 16px;
+}
+.day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  background: #1a1a2e;
+  color: #78909c;
+  border: 1px solid #1e3a5f;
+}
+.day.done { background: #1b5e20; color: #a5d6a7; }
+.day.missed { background: #bf360c; color: #ffcc80; }
+.day.today { border: 3px solid #4fc3f7; color: #4fc3f7; }
+.profile-info {
+  text-align: center;
+  padding: 16px;
+  background: #08080f;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+.profile-info p { color: #78909c; font-size: 14px; margin: 4px 0; }
+.strong { color: #66bb6a; }
+.weak { color: #ef5350; }
+.ring-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+.ring-item { text-align: center; }
+.ring-item svg { transform: rotate(-90deg); }
+.ring-item text {
+  transform: rotate(90deg);
+  transform-origin: center;
+  font-size: 16px;
+  font-weight: 800;
+  fill: #fff;
+}
+.ring-label {
+  font-size: 12px;
+  color: #78909c;
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+.eliminated { opacity: 0.45; }
+.eliminated .player { opacity: 0.5; }
+.hidden { display: none !important; }
+
+
+.kasim-highlight h4 {
+  color: #4fc3f7;
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.kasim-stats-rpg {
+  background: #0a0a14;
+  border: 2px solid #1e3a5f;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0;
+}
+.stat-row {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #1a1a2e;
+}
+.stat-row:last-child { border-bottom: none; }
+.stat-icon {
+  width: 32px;
+  text-align: center;
+  font-size: 20px;
+  margin-right: 12px;
+}
+.stat-name {
+  flex: 1;
+  font-size: 14px;
+  color: #b0bec5;
+  font-weight: 600;
+}
+.stat-bar {
+  width: 140px;
+  height: 10px;
+  background: #1a1a2e;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0 12px;
+  border: 1px solid #1e3a5f;
+}
+.stat-fill {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.6s ease;
+}
+.stat-fill.epic { background: #ffd700; box-shadow: 0 0 10px rgba(255,215,0,0.4); }
+.stat-fill.high { background: #4fc3f7; }
+.stat-fill.low { background: #ef5350; }
+.stat-value {
+  width: 100px;
+  text-align: right;
+  font-weight: 800;
+  font-size: 14px;
+}
+.stat-value.epic { color: #ffd700; }
+.stat-value.high { color: #4fc3f7; }
+.stat-value.low { color: #ef5350; }
+.weak-row { opacity: 0.7; }
+
+
+
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>⚽ Блю Лок: Программист</h1>
+    <p>Система отбора | 300 бойцов | Только 10 достигнут S-ранга | Касим в игре</p>
+  </div>
+
+  <!-- ЭГО ДЖИМПАЧИ -->
+  <div class="ego-section">
+<img src="images/i.jpeg" alt="Главный тренер">
+    <div class="ego-quotes">
+      <h2>🎯 Слова Эго Джимпачи — Главного тренера</h2>
+      <div class="quote">«Ты можешь закрыть меня, но ты не сможешь закрыть мои идеи.»</div>
+      <div class="quote">«Если ты не готов поставить на кон всё, то тебе свою мечту никогда не исполнить.»</div>
+      <div class="quote">«У каждого из вас имеется своё личное оружие. Слепое подражание кому-либо ничего хорошего не принесёт. Найди свой стиль и отточи до совершенства.»</div>
+      <div class="quote">«Ваш талант словно алмаз — не сможете его огранить, останется только мусор.»</div>
+      <div class="quote">«Нужно, чтобы оружие работало в независимости от обстоятельств.»</div>
+      <div class="quote">«Мир слишком многообразен и непредсказуем. Надеяться на идеальный момент — глупо. Лучший вариант — стараться модернизировать в любых условиях.»</div>
+      <div class="quote">«Важно двигаться постоянно. Как в бою — не будешь двигаться, попадать по тебе сопернику будет легче.»</div>
+      <div class="quote">«Талант — это умение доказывать свои способности.»</div>
+      <div class="quote">«Пробуждение похоже на сборку пазла из накопленных мыслей и опыта.»</div>
+    </div>
+  </div>
+
+  <!-- КАСИМ — ВЫДЕЛЕННЫЙ БЛОК -->
+ <div class="kasim-stats-rpg">
+  <h3 style="color:#4fc3f7; text-align:center; margin-bottom:16px; text-transform:uppercase; letter-spacing:2px;">🧠 ИНТЕЛЛЕКТ КАСИМА | IQ 111</h3>
+
+  <div class="stat-row">
+    <div class="stat-icon">⚡</div>
+    <div class="stat-name">Логическое мышление</div>
+    <div class="stat-bar"><div class="stat-fill epic" style="width:100%;"></div></div>
+    <div class="stat-value epic">121</div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-icon">💾</div>
+    <div class="stat-name">Рабочая память</div>
+    <div class="stat-bar"><div class="stat-fill epic" style="width:100%;"></div></div>
+    <div class="stat-value epic">125</div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-icon">🔢</div>
+    <div class="stat-name">Числовое мышление</div>
+    <div class="stat-bar"><div class="stat-fill high" style="width:97%;"></div></div>
+    <div class="stat-value high">117</div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-icon">🧠</div>
+    <div class="stat-name">Абстрактное мышление</div>
+    <div class="stat-bar"><div class="stat-fill high" style="width:92%;"></div></div>
+    <div class="stat-value high">111</div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-icon">🔗</div>
+    <div class="stat-name">Последовательное мышление</div>
+    <div class="stat-bar"><div class="stat-fill high" style="width:91%;"></div></div>
+    <div class="stat-value high">109</div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-icon">🎯</div>
+    <div class="stat-name">Аналитический склад ума</div>
+    <div class="stat-bar"><div class="stat-fill high" style="width:95%;"></div></div>
+    <div class="stat-value high">★★★★★</div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-icon">🌍</div>
+    <div class="stat-name">Иностранные языки</div>
+    <div class="stat-bar"><div class="stat-fill high" style="width:90%;"></div></div>
+    <div class="stat-value high">4 языка</div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-icon">🏃</div>
+    <div class="stat-name">Скорость мышления</div>
+    <div class="stat-bar"><div class="stat-fill high" style="width:93%;"></div></div>
+    <div class="stat-value high">⚡ Блиц</div>
+  </div>
+
+  <div class="stat-row weak-row">
+    <div class="stat-icon">🧩</div>
+    <div class="stat-name">Пространственный интеллект</div>
+    <div class="stat-bar"><div class="stat-fill low" style="width:45%;"></div></div>
+    <div class="stat-value low">90 ⚠️</div>
+  </div>
+
+  <div class="stat-row weak-row">
+    <div class="stat-icon">⏱️</div>
+    <div class="stat-name">Интеллектуальная выносливость</div>
+    <div class="stat-bar"><div class="stat-fill low" style="width:40%;"></div></div>
+    <div class="stat-value high">30 + 3 ✓</div>
+  </div>
+
+  <div class="stat-row weak-row">
+    <div class="stat-icon">🔄</div>
+    <div class="stat-name">Многозадачность</div>
+    <div class="stat-bar"><div class="stat-fill low" style="width:35%;"></div></div>
+    <div class="stat-value low">35 ⚠️</div>
+  </div>
+
+  <div class="stat-row weak-row">
+    <div class="stat-icon">👁️</div>
+    <div class="stat-name">Неповоротливое внимание</div>
+    <div class="stat-bar"><div class="stat-fill low" style="width:30%;"></div></div>
+    <div class="stat-value low">30 ⚠️</div>
+  </div>
+
+  <div class="stat-row weak-row">
+    <div class="stat-icon">🧠</div>
+    <div class="stat-name">Гибкость мышления</div>
+    <div class="stat-bar"><div class="stat-fill low" style="width:32%;"></div></div>
+    <div class="stat-value low">32 ⚠️</div>
+  </div>
+
+  <div class="stat-row weak-row">
+    <div class="stat-icon">📚</div>
+    <div class="stat-name">Обучаемость</div>
+    <div class="stat-bar"><div class="stat-fill low" style="width:42%;"></div></div>
+    <div class="stat-value high">42 + 5 ✓</div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-icon">♜</div>
+    <div class="stat-name">ЦНС — Ладья</div>
+   
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-icon">💣</div>
+    <div class="stat-name">Взрывная сила</div>
+    <div class="stat-bar"><div class="stat-fill high" style="width:80%;"></div></div>
+    <div class="stat-value high">80</div>
+  </div>
+
+  <div class="stat-row weak-row">
+    <div class="stat-icon">🗄️</div>
+    <div class="stat-name">Долговременная память</div>
+    <div class="stat-bar"><div class="stat-fill low" style="width:50%;"></div></div>
+    <div class="stat-value low">50</div>
+  </div>
+</div>
+
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-val" id="total-players">300</div>
+      <div class="stat-label">В игре</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val" id="eliminated-count">60</div>
+      <div class="stat-label">Вылетело</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val" id="your-rank">С</div>
+      <div class="stat-label">Ранг Касима</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val" id="days-left">60</div>
+      <div class="stat-label">Дней до вылета С</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val" id="your-position">—</div>
+      <div class="stat-label">Позиция Касима</div>
+    </div>
+  </div>
+
+  <div class="ranks">
+    <div class="rank rank-d">D — Отборочные</div>
+    <div class="rank rank-c">C — Претендент</div>
+    <div class="rank rank-b">B — Второй отбор</div>
+    <div class="rank rank-a">A — Первый отбор</div>
+    <div class="rank rank-s">S — Победители</div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('leaderboard')">🏆 Таблица</button>
+    <button class="tab" onclick="showTab('phases')">📋 Фазы</button>
+    <button class="tab" onclick="showTab('progress')">📊 Прогресс Касима</button>
+    <button class="tab" onclick="showTab('eliminated')">💀 Вылетевшие</button>
+  </div>
+
+  <div id="leaderboard" class="tab-content">
+    <div class="section">
+      <h3>🔥 Топ-20 активных бойцов</h3>
+      <div class="nation-filter" id="nation-filter"></div>
+      <div id="leaderboard-list"></div>
+    </div>
+  </div>
+
+  <div id="phases" class="tab-content hidden">
+    <div class="section">
+      <h3>⚡ Фазы отбора</h3>
+      <div id="phases-list"></div>
+    </div>
+    <div class="section">
+      <h3>📊 Статистика вылетов</h3>
+      <div id="elim-stats" style="font-size:14px;color:#78909c;line-height:2;"></div>
+    </div>
+  </div>
+
+  <div id="progress" class="tab-content hidden">
+    <div class="section">
+      <h3>👤 Прогресс Касима</h3>
+      <div class="profile-info">
+        <img src="images/kasim.jpg" alt="Касим" style="width:80px;height:80px;border-radius:50%;border:2px solid #4fc3f7;margin-bottom:10px;object-fit:cover;">
+        <p style="font-size:20px;font-weight:800;color:#4fc3f7;margin-bottom:10px;">🇷🇺 Касим — warrior of God #247</p>
+        <p style="margin-top:10px;color:#90a4ae;font-size:13px;">
+          <strong>Архетип:</strong> Взрывной стратег<br>
+          <em>«Чем ярче горит свеча — тем быстрее она гаснет»</em>
+        </p>
+        <p style="margin-top:8px;color:#78909c;font-size:13px;">
+          ♜ ЦНС — Ладья
+        </p>
+      </div>
+      <div class="ring-container" id="progress-rings"></div>
+      <div class="checklist">
+        <h4 style="color:#4fc3f7;margin:0 0 14px;font-size:15px;text-transform:uppercase;">📅 Чек-лист С-ранга — Касим</h4>
+        <label class="check-item"><input type="checkbox" id="c1"> несколько часов JavaScript теории (курс, не AI)</label>
+        <label class="check-item"><input type="checkbox" id="c2"> 30 минут практики (писать код самому)</label>
+        <label class="check-item"><input type="checkbox" id="c3"> 2 часа отдыха между подходами</label>
+        <label class="check-item"><input type="checkbox" id="c4"> Питание: продукты полезные для мозга</label>
+        <label class="check-item"><input type="checkbox" id="c5"> Сон 7–8 часов (без вариантов)</label>
+        <label class="check-item"><input type="checkbox" id="c6"> 2 часа, 2 раза в неделью спорта (до отказа)</label>
+        <label class="check-item"><input type="checkbox" id="c7"> 15 минут повторение пройденного</label>
+        <button class="btn" onclick="markDay()">✅ Отметить день — Касим</button>
+      </div>
+      <div style="margin-top:20px;">
+        <h4 style="color:#4fc3f7;margin:0 0 14px;font-size:15px;text-transform:uppercase;">📆 Сентябрь 2026 — Календарь Касима</h4>
+        <div class="calendar" id="calendar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="eliminated" class="tab-content hidden">
+    <div class="section eliminated">
+      <h3>💀 Вылетевшие бойцы</h3>
+      <p style="color:#8d6e63;font-size:14px;margin-bottom:12px;font-style:italic;">Их профессиональная карьера программиста закончена здесь. Касим, ты следующий — или ты докажешь?</p>
+      <div id="eliminated-list"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ==================== ДАННЫЕ ====================
+var nations = [
+  {code:'JP',flag:'🇯🇵',name:'Япония',count:50},
+  {code:'DE',flag:'🇩🇪',name:'Германия',count:50},
+  {code:'FR',flag:'🇫🇷',name:'Франция',count:50},
+  {code:'RU',flag:'🇷🇺',name:'Россия',count:50},
+  {code:'BR',flag:'🇧🇷',name:'Бразилия',count:30},
+  {code:'KR',flag:'🇰🇷',name:'Корея',count:30},
+  {code:'GB',flag:'🇬🇧',name:'Англия',count:20},
+  {code:'IT',flag:'🇮🇹',name:'Италия',count:10},
+  {code:'AR',flag:'🇦🇷',name:'Аргентина',count:6},
+  {code:'ES',flag:'🇪🇸',name:'Испания',count:4}
+];
+
+var firstNames = {
+  JP:['Takumi','Yuki','Ren','Haruto','Sora','Kaito','Riku','Minato','Itsuki','Hayato','Daiki','Shota','Ryota','Kenta','Sho','Tsubasa','Kazuki','Hiro','Satoshi','Takeshi','Akira','Jun','Shinji','Masaru','Tetsuya','Koichi','Yuta','Naoki','Takashi','Yuji','Kei','Ryo','Shin','Tomo','Koji','Hideo','Yoshi','Makoto','Toshi','Kenji','Nobu','Hiroshi','Kazu','Isamu','Taro','Jiro','Saburo','Shiro','Goro','Rokuro'],
+  DE:['Lukas','Felix','Max','Tim','Jonas','Leon','Noah','Paul','Elias','Finn','Ben','Julian','David','Moritz','Tom','Niklas','Jan','Florian','Simon','Tobias','Philipp','Alexander','Daniel','Marcel','Patrick','Sebastian','Christian','Markus','Stefan','Michael','Andreas','Thomas','Martin','Peter','Klaus','Wolfgang','Jürgen','Hans','Fritz','Otto','Heinrich','Karl','Wilhelm','Friedrich','Ludwig','Gustav','Oskar','Emil','Bruno','Hermann'],
+  FR:['Lucas','Hugo','Nathan','Enzo','Louis','Gabriel','Raphael','Arthur','Jules','Ethan','Leo','Tom','Timothee','Mathis','Clement','Maxime','Alexandre','Antoine','Baptiste','Theo','Quentin','Nicolas','Pierre','Jean','Francois','Philippe','Michel','Andre','Bernard','Robert','Marcel','Jacques','Henri','Georges','Rene','Alain','Patrick','Daniel','Christophe','Olivier','Frederic','Sebastien','Vincent','Jerome','Damien','Laurent','Stephane','Bruno','David','Kevin'],
+  RU:['Ivan','Dmitry','Alexey','Sergey','Mikhail','Andrey','Nikolay','Vladimir','Pavel','Artem','Kirill','Maxim','Roman','Ilya','Egor','Denis','Oleg','Yuri','Boris','Viktor','Stanislav','Konstantin','Grigory','Timofey','Matvey','Mark','Lev','David','Fedor','Artyom','Gleb','Platon','Savely','Tikhon','Rodion','German','Ignat','Prokhor','Semyon','Taras','Zakhar','Yaroslav','Miron','Luka','Nazar','Adam','Samir','Kamil','Timur','Marat'],
+  BR:['Lucas','Gabriel','Pedro','Matheus','Rafael','Felipe','Joao','Guilherme','Bruno','Thiago','Marcos','Andre','Diego','Leonardo','Vinicius','Gustavo','Daniel','Henrique','Caio','Eduardo','Vitor','Samuel','Enzo','Davi','Miguel','Arthur','Bernardo','Heitor','Lorenzo','Theo','Benjamin','Noah','Joaquim','Samuel','Anthony','Isaac','Yuri','Bryan','Caleb','Ryan','Emanuel','Francisco','Otavio','Igor','Alex','Ricardo','Fernando','Julio','Marcelo','Roberto'],
+  KR:['Min-jun','Seo-jun','Ha-joon','Do-yun','Ji-ho','Jun-seo','Min-ho','Tae-min','Woo-jin','Ji-hoon','Hyun-woo','Joon-ho','Sung-min','Dong-hyun','Young-woo','Jae-sung','Sang-ho','Kyung-min','Hee-chul','Byung-ho','Chul-soo','Young-sik','Dae-hyun','Sang-chul','Jong-hyun','Myung-hoon','Ki-woong','Seung-ho','Tae-woong','Ho-jin','Jin-woo','Sung-hoon','Dong-wook','Young-jae','Min-kyu','Sang-woo','Jae-hyun','Hoon','Tae-ho','Won-jae','Seung-jae','Min-seok','Hyun-jin','Joon-young','Dong-hoon','Sung-jin','Young-ho','Ki-hoon','Jae-won','Min-hyun'],
+  GB:['Oliver','George','Harry','Jack','Noah','Charlie','Jacob','Alfie','Freddie','Oscar','James','William','Thomas','Henry','Leo','Arthur','Archie','Joshua','Ethan','Mason','Logan','Lucas','Max','Alexander','Daniel','Samuel','Joseph','Benjamin','Adam','Ryan','Luke','Matthew','Callum','Dylan','Jake','Harvey','Tyler','Harley','Jayden','Kai','Kayden','Kian','Kyle','Liam','Lewis','Louie','Luca','Mason','Nathan'],
+  IT:['Francesco','Alessandro','Lorenzo','Mattia','Andrea','Gabriele','Riccardo','Edoardo','Tommaso','Leonardo','Davide','Giuseppe','Antonio','Giovanni','Roberto','Mario','Luigi','Paolo','Stefano','Marco','Angelo','Vincenzo','Pietro','Salvatore','Carlo','Franco','Domenico','Bruno','Maurizio','Fabio','Claudio','Sergio','Luca','Simone','Nicola','Daniele','Federico','Alessio','Matteo','Christian','Manuel','Samuele','Diego','Filippo','Giacomo','Nicolò','Emanuele','Pietro','Vittorio','Giulio'],
+  AR:['Santiago','Mateo','Benjamin','Thiago','Santino','Lautaro','Tomas','Joaquin','Bautista','Franco','Lucas','Maximiliano','Juan','Pedro','Martin','Nicolas','Agustin','Julian','Bruno','Ezequiel','Gonzalo','Ignacio','Ramiro','Emiliano','Valentin','Dante','Liam','Noah','Felipe','Samuel','Dylan','Ian','Jeremias','Aaron','Ian','Leonel','Franco','Matias','Alan','Cristian','Damian','Elias','Fabian','Gabriel','Hernan','Ivan','Javier','Kevin','Leonardo','Mariano'],
+  ES:['Hugo','Martin','Lucas','Mateo','Leo','Daniel','Alejandro','Manuel','Pablo','Alvaro','Adrian','Mario','Diego','Oliver','Marcos','Alex','Bruno','Miguel','Antonio','Javier','Sergio','Marc','Carlos','Angel','Juan','Jorge','Gonzalo','Ivan','Ruben','Victor','Hector','Aitor','Eric','Adam','Jesus','Joel','Pol','Nil','Jan','Martí','Unai','Ander','Iker','Asier','Ander','Eneko','Luka','Markel','Aritz','Jon']
+};
+
+var lastNames = {
+  JP:['Sato','Suzuki','Takahashi','Tanaka','Watanabe','Ito','Yamamoto','Nakamura','Kobayashi','Kato','Yoshida','Yamada','Sasaki','Yamaguchi','Matsumoto','Inoue','Kimura','Shimizu','Hayashi','Shibata','Saito','Ishikawa','Yamasaki','Nakajima','Mori','Abe','Ikeda','Hashimoto','Yamashita','Ishida','Ogawa','Hasegawa','Goto','Okada','Kondo','Maeda','Fujita','Endo','Aoki','Sakamoto','Murakami','Ota','Kaneko','Fujii','Fukuda','Nishimura','Miura','Takeuchi','Nakagawa','Matsuda'],
+  DE:['Müller','Schmidt','Schneider','Fischer','Weber','Meyer','Wagner','Becker','Hoffmann','Schulz','Koch','Bauer','Richter','Klein','Wolf','Schröder','Neumann','Schwarz','Zimmermann','Braun','Krüger','Hofmann','Hartmann','Lange','Schmitt','Werner','Krause','Meier','Köhler','Herrmann','König','Walter','Mayer','Huber','Kaiser','Fuchs','Peters','Lang','Scholz','Möller','Weiß','Jung','Hahn','Schubert','Vogel','Friedrich','Keller','Günther','Frank','Berger'],
+  FR:['Martin','Bernard','Thomas','Petit','Robert','Richard','Durand','Dubois','Moreau','Laurent','Simon','Michel','Lefebvre','Leroy','Roux','David','Bertrand','Morel','Fournier','Girard','Bonnet','Dupont','Lambert','François','Martinez','Legrand','Garnier','Faure','Rousseau','Vincent','Müller','Lefevre','Guerin','Dupuy','Lopez','Jean','Hubert','Caron','Boyer','Gauthier','Robin','Masson','Sanchez','Blanc','Gerard','Mercier','Moulin','Chevalier','Clement','Morin'],
+  RU:['Ivanov','Smirnov','Kuznetsov','Popov','Vasiliev','Petrov','Sokolov','Mikhailov','Novikov','Fedorov','Morozov','Volkov','Alekseev','Lebedev','Semenov','Egorov','Pavlov','Kozlov','Stepanov','Nikolaev','Orlov','Andreev','Makarov','Zakharov','Zaitsev','Soloviev','Borisov','Yakovlev','Grigoriev','Romanov','Vorobiev','Sergeev','Kuzmin','Frolov','Afanasev','Filippov','Afanasiev','Dmitriev','Osipov','Kalin','Belyaev','Gusev','Matveev','Titov','Karpov','Shcherbakov','Nikitin','Kalinin','Bogdanov','Fomin'],
+  BR:['Silva','Santos','Oliveira','Souza','Rodrigues','Ferreira','Alves','Pereira','Lima','Gomes','Costa','Ribeiro','Martins','Almeida','Nascimento','Carvalho','Melo','Araujo','Barbosa','Rocha','Ribeiro','Castro','Monteiro','Teixeira','Cardoso','Pinto','Andrade','Moreira','Correa','Dias','Freitas','Campos','Machado','Medeiros','Nunes','Rezende','Borges','Cavalcanti','Fernandes','Azevedo','Cunha','Leite','Marques','Moraes','Neves','Peixoto','Pires','Ramos','Reis','Sales'],
+  KR:['Kim','Lee','Park','Choi','Jung','Kang','Cho','Yoon','Jang','Lim','Han','Oh','Seo','Shin','Kwon','Hwang','Song','Moon','Baek','Yoo','Hong','Ahn','Ko','Bae','Son','Woo','Yang','Heo','Ji','Min','Koo','Seong','Seo','Nam','Shim','Jun','Eom','Jeon','Ki','Ra','Ryu','Myung','Na','Cha','Cheon','Chun','Do','Ha','Huh','In','Jin'],
+  GB:['Smith','Jones','Williams','Brown','Taylor','Davies','Wilson','Evans','Thomas','Johnson','Roberts','Walker','Wright','Thompson','White','Hughes','Edwards','Green','Lewis','Wood','Harris','Martin','Jackson','Clarke','Clark','Turner','Hill','Cooper','Ward','Morris','Moore','Lee','King','Watson','Baker','Harrison','Morgan','Allen','James','Scott','Phillips','Young','Bell','Campbell','Mitchell','Carter','Roberts','Parker','Collins','Bennett'],
+  IT:['Rossi','Russo','Ferrari','Esposito','Bianchi','Romano','Colombo','Ricci','Marino','Greco','Bruno','Galli','Conti','De Luca','Mancini','Costa','Giordano','Rizzo','Lombardi','Moretti','Barbieri','Fontana','Santoro','Mariani','Rinaldi','Caruso','Ferrara','Galli','Martini','Leone','Longo','Gentile','Martinelli','Vitale','Lombardo','Serra','Coppola','De Santis','D\'Angelo','Marchetti','Parisi','Villa','Conte','Ferraro','Ferri','Fabbri','Bianco','Palumbo','Galli','Sala'],
+  AR:['González','Rodríguez','Gómez','Fernández','López','Martínez','Pérez','García','Sánchez','Romero','Sosa','Torres','Álvarez','Ruiz','Ramírez','Flores','Benítez','Bravo','Agüero','Molina','Castro','Ortega','Herrera','Medina','Rojas','Reyes','Morales','Ortiz','Silva','Mendoza','Hernández','Guerrero','Ferreyra','Domínguez','Pereyra','Vega','Castillo','Correa','Vázquez','Ramos','Vargas','Müller','Cabrera','Acosta','Ledesma','Quiroga','Paz','Vera','Roldán','Cáceres'],
+  ES:['García','Rodríguez','González','Fernández','López','Martínez','Sánchez','Pérez','Gómez','Martín','Jiménez','Ruiz','Hernández','Díaz','Moreno','Álvarez','Romero','Alonso','Gutiérrez','Navarro','Torres','Domínguez','Vázquez','Ramos','Gil','Ramírez','Serrano','Blanco','Molina','Morales','Suárez','Ortega','Delgado','Castro','Ortiz','Rubio','Marín','Sanz','Iglesias','Nuñez','Medina','Garrido','Cortés','Castillo','Santos','Lozano','Guerrero','Cano','Prieto','Méndez']
+};
+
+var archetypes = [
+  {name:'Гений-адаптив',base:88},
+  {name:'Нарцисс-работяга',base:75},
+  {name:'Творец-хаос',base:70},
+  {name:'Ленивый гений',base:82},
+  {name:'Командный игрок',base:65},
+  {name:'Боец-кортизол',base:58},
+  {name:'Методист',base:68},
+  {name:'Физик-выносливый',base:62},
+  {name:'Среднячок-старатель',base:55},
+  {name:'Взрывной спринтер',base:60}
+];
+
+// Генерация игроков
+var players = [];
+var id = 1;
+for (var ni = 0; ni < nations.length; ni++) {
+  var n = nations[ni];
+  for (var i = 0; i < n.count; i++) {
+    var a = archetypes[Math.floor(Math.random() * archetypes.length)];
+    var fn = firstNames[n.code][Math.floor(Math.random() * firstNames[n.code].length)];
+    var ln = lastNames[n.code][Math.floor(Math.random() * lastNames[n.code].length)];
+    var v = Math.floor(Math.random() * 28) - 14;
+    var sc = Math.max(25, Math.min(97, a.base + v));
+    players.push({
+      id: id++,
+      name: fn + ' ' + ln,
+      nation: n.code,
+      flag: n.flag,
+      archetype: a.name,
+      score: sc,
+      status: 'active',
+      eliminatedAt: null
+    });
+  }
+}
+
+// КАСИМ — игрок 247
+let kasim = {
+  id: 301,
+  name: 'Касим',
+  nation: 'RU',
+  flag: '🇷🇺',
+  archetype: 'Боец-кортизол',
+  score: 58,
+  status: 'active',
+  eliminatedAt: null,
+  isYou: true
+};
+players.push(kasim);
+
+// Начальные вылеты
+var elimCount = 60;
+for (let e = 0; e < elimCount; e++) {
+  var idx = Math.floor(Math.random() * 300);
+  if (players[idx].status === 'active' && !players[idx].isYou) {
+    players[idx].status = 'eliminated';
+    players[idx].eliminatedAt = 'С-ранг';
+    players[idx].score = Math.floor(players[idx].score * 0.55);
+  }
+}
+
+// ==================== ФУНКЦИИ ====================
+function getActive() {
+  var act = [];
+  for (var i = 0; i < players.length; i++) {
+    if (players[i].status === 'active') act.push(players[i]);
+  }
+  act.sort(function(a,b){ return b.score - a.score; });
+  return act;
+}
+
+function getYourPos() {
+  var act = getActive();
+  for (var i = 0; i < act.length; i++) {
+    if (act[i].isYou) return '#' + (i + 1);
+  }
+  return '—';
+}
+
+function renderLeaderboard(filter) {
+  var container = document.getElementById('leaderboard-list');
+  var act = getActive();
+  var filtered = filter === 'ALL' ? act : act.filter(function(p){ return p.nation === filter; });
+  filtered = filtered.slice(0, 20);
+
+  var html = '';
+  for (var i = 0; i < filtered.length; i++) {
+    var p = filtered[i];
+    var rankClass = '';
+    if (i === 0) rankClass = 'gold';
+    else if (i === 1) rankClass = 'silver';
+    else if (i === 2) rankClass = 'bronze';
+    else if (i < 10) rankClass = 'top10';
+
+    var isYou = p.isYou ? 'you' : '';
+    var stText = p.score > 80 ? 'Лидер' : (p.score > 60 ? 'В игре' : 'Опасно');
+    var stClass = p.score > 80 ? 'active-st' : (p.score > 60 ? 'active-st' : 'danger-st');
+    var color = i === 0 ? '#ffd700' : (i === 1 ? '#c0c0c0' : (i === 2 ? '#cd7f32' : '#4fc3f7'));
+
+    html += '<div class="player ' + isYou + '">';
+    html += '<div class="player-rank ' + rankClass + '">#' + (i+1) + '</div>';
+    html += '<div class="player-flag">' + p.flag + '</div>';
+    html += '<div class="player-name">' + p.name + (p.isYou ? ' <span style="color:#4fc3f7">(ТЫ)</span>' : '') + '<br><span class="arch">' + p.archetype + '</span></div>';
+    html += '<div class="player-bar"><div class="player-fill" style="width:' + p.score + '%;background:' + color + '"></div></div>';
+    html += '<div class="player-score">' + p.score + '%</div>';
+    html += '<div class="player-status ' + stClass + '">' + stText + '</div>';
+    html += '</div>';
+  }
+  container.innerHTML = html;
+  document.getElementById('your-position').textContent = getYourPos();
+}
+
+function renderEliminated() {
+  var container = document.getElementById('eliminated-list');
+  var elim = [];
+  for (var i = 0; i < players.length; i++) {
+    if (players[i].status === 'eliminated') elim.push(players[i]);
+  }
+  elim.sort(function(a,b){ return b.score - a.score; });
+
+  var html = '';
+  for (var i = 0; i < elim.length; i++) {
+    var p = elim[i];
+    html += '<div class="player">';
+    html += '<div class="player-rank" style="color:#555">—</div>';
+    html += '<div class="player-flag">' + p.flag + '</div>';
+    html += '<div class="player-name">' + p.name + '<br><span class="arch" style="color:#555">' + p.archetype + ' • Вылет: ' + p.eliminatedAt + '</span></div>';
+    html += '<div class="player-bar"><div class="player-fill" style="width:' + p.score + '%;background:#555"></div></div>';
+    html += '<div class="player-score" style="color:#555">' + p.score + '%</div>';
+    html += '<div class="player-status elim-st">Вылет</div>';
+    html += '</div>';
+  }
+  container.innerHTML = html;
+
+  document.getElementById('eliminated-count').textContent = elim.length;
+  document.getElementById('total-players').textContent = getActive().length;
+}
+
+function renderPhases() {
+  var container = document.getElementById('phases-list');
+  var phases = [
+    {rank:'D',title:'НЕИЗВЕСТНЫЙ',desc:'JavaScript основы: переменные, типы данных, операторы, условия (if/else), циклы (for, while), функции. Писать код самому, без AI. Цель: 10 рабочих программ.',deadline:'30 дней',elim:'50 вылетит (300→250)',cls:'phase-d'},
+    {rank:'C',title:'ПРЕТЕНДЕНТ',desc:'Объекты, массивы, методы массивов, DOM-манипуляции, события. 3 проекта без AI: калькулятор, todo-list, форма обратной связи.',deadline:'60 дней',elim:'80 вылетит (250→170)',cls:'phase-c'},
+    {rank:'B',title:'ВТОРОЙ ОТБОР',desc:'React основы: компоненты, props, state, hooks (useState, useEffect), маршрутизация. Рабочее веб-приложение с API.',deadline:'60 дней',elim:'70 вылетит (170→100)',cls:'phase-b'},
+    {rank:'A',title:'ПЕРВЫЙ ОТБОР',desc:'React Native: компоненты, навигация, API, состояние. Первое мобильное приложение, публикация в Expo или сборка APK.',deadline:'90 дней',elim:'60 вылетит (100→40)',cls:'phase-a'},
+    {rank:'S',title:'ЛУЧШИЙ В МИРЕ',desc:'Фриланс, первый реальный заказ, заработок. Портфолио из 3+ приложений. Только 10 финалистов получают звание.',deadline:'90 дней',elim:'30 вылетит (40→10)',cls:'phase-s'}
+  ];
+
+  var html = '';
+  for (var i = 0; i < phases.length; i++) {
+    var p = phases[i];
+    html += '<div class="phase-card ' + p.cls + '">';
+    html += '<h4>' + p.rank + '-ранг: ' + p.title + '</h4>';
+    html += '<p>' + p.desc + '</p>';
+    html += '<div class="phase-deadline">⏱ ' + p.deadline + ' &nbsp;&nbsp; 💀 ' + p.elim + '</div>';
+    html += '</div>';
+  }
+  container.innerHTML = html;
+
+  var byNation = {};
+  for (var i = 0; i < players.length; i++) {
+    if (players[i].status === 'eliminated') {
+      byNation[players[i].nation] = (byNation[players[i].nation] || 0) + 1;
+    }
+  }
+  var statsHTML = '<strong>Всего вылетело:</strong> ' + players.filter(function(p){return p.status==='eliminated'}).length + ' бойцов<br>';
+  statsHTML += '<strong>По странам:</strong><br>';
+  var sorted = [];
+  for (var k in byNation) sorted.push({code:k,count:byNation[k]});
+  sorted.sort(function(a,b){return b.count-a.count;});
+  for (var i = 0; i < sorted.length; i++) {
+    var n = nations.find(function(x){return x.code===sorted[i].code;});
+    statsHTML += '&nbsp;&nbsp;' + n.flag + ' ' + n.name + ': ' + sorted[i].count + ' вылетевших<br>';
+  }
+  document.getElementById('elim-stats').innerHTML = statsHTML;
+}
+
+function renderCalendar() {
+  var container = document.getElementById('calendar');
+  var html = '';
+  for (var i = 1; i <= 30; i++) {
+    var cls = 'day';
+    if (i < 1) cls += ' done';
+    else if (i === 1) cls += ' today';
+    html += '<div class="' + cls + '">' + i + '</div>';
+  }
+  container.innerHTML = html;
+}
+
+function renderRings() {
+  var container = document.getElementById('progress-rings');
+  var stats = [
+    {label:'Теория JS',value:12,color:'#4fc3f7'},
+    {label:'Практика',value:5,color:'#66bb6a'},
+    {label:'Проекты',value:0,color:'#ffa726'},
+    {label:'Выносливость',value:20,color:'#ef5350'},
+    {label:'Ранг D',value:18,color:'#ab47bc'}
+  ];
+
+  var html = '';
+  for (var i = 0; i < stats.length; i++) {
+    var s = stats[i];
+    var r = 32;
+    var c = 2 * Math.PI * r;
+    var offset = c - (s.value / 100) * c;
+    html += '<div class="ring-item">';
+    html += '<svg width="80" height="80">';
+    html += '<circle cx="40" cy="40" r="' + r + '" fill="none" stroke="#1a1a2e" stroke-width="7"/>';
+    html += '<circle cx="40" cy="40" r="' + r + '" fill="none" stroke="' + s.color + '" stroke-width="7" stroke-dasharray="' + c + '" stroke-dashoffset="' + offset + '" stroke-linecap="round"/>';
+    html += '<text x="40" y="45" text-anchor="middle">' + s.value + '%</text>';
+    html += '</svg>';
+    html += '<div class="ring-label">' + s.label + '</div>';
+    html += '</div>';
+  }
+  container.innerHTML = html;
+}
+
+function renderNationFilter() {
+  var container = document.getElementById('nation-filter');
+  var html = '<button class="nation-btn active" onclick="filterNat(\'ALL\',this)">🌍 Все</button>';
+  for (var i = 0; i < nations.length; i++) {
+    html += '<button class="nation-btn" onclick="filterNat(\'' + nations[i].code + '\',this)">' + nations[i].flag + ' ' + nations[i].name + '</button>';
+  }
+  container.innerHTML = html;
+}
+
+function filterNat(code, btn) {
+  var btns = document.querySelectorAll('.nation-btn');
+  for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
+  btn.classList.add('active');
+  renderLeaderboard(code);
+}
+
+function showTab(name) {
+  var contents = document.querySelectorAll('.tab-content');
+  for (var i = 0; i < contents.length; i++) contents[i].classList.add('hidden');
+  document.getElementById(name).classList.remove('hidden');
+
+  var tabs = document.querySelectorAll('.tab');
+  for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove('active');
+  event.target.classList.add('active');
+}
+
+function markDay() {
+  var checks = ['c1','c2','c3','c4','c5','c6','c7'];
+  var checked = 0;
+  for (var i = 0; i < checks.length; i++) {
+    if (document.getElementById(checks[i]).checked) checked++;
+  }
+
+  if (checked < 4) {
+    alert('⚠️ Касим! Выполнено только ' + checked + '/7. Нужно минимум 4/7 для засчитывания дня!');
+    return;
+  }
+
+  kasim.score = Math.min(98, kasim.score + 3);
+
+  for (var i = 0; i < players.length; i++) {
+    if (players[i].status === 'active' && !players[i].isYou) {
+      var change = Math.floor(Math.random() * 7) - 2;
+      players[i].score = Math.max(25, Math.min(97, players[i].score + change));
+    }
+  }
+
+  if (Math.random() > 0.7) {
+    var candidates = [];
+    for (var i = 0; i < players.length; i++) {
+      if (players[i].status === 'active' && !players[i].isYou && players[i].score < 45) {
+        candidates.push(players[i]);
+      }
+    }
+    if (candidates.length > 0) {
+      var victim = candidates[Math.floor(Math.random() * candidates.length)];
+      victim.status = 'eliminated';
+      victim.eliminatedAt = 'D-ранг';
+      victim.score = Math.floor(victim.score * 0.5);
+    }
+  }
+
+  renderLeaderboard('ALL');
+  renderEliminated();
+  renderRings();
+
+  for (var i = 0; i < checks.length; i++) {
+    document.getElementById(checks[i]).checked = false;
+  }
+
+  var msgs = [
+    '✅ Касим! День засчитан! Ты приблизился к C-рангу.',
+    '🔥 Отлично, Касим! Ещё один шаг к вершине.',
+    '⚽ Гол! Касим движется вперёд, пока другие вылетают.',
+    '💪 Мобилизация ресурсов — твой козырь. Используй его, Касим!'
+  ];
+  alert(msgs[Math.floor(Math.random() * msgs.length)]);
+}
+
+// ==================== ЗАПУСК ====================
+renderNationFilter();
+renderLeaderboard('ALL');
+renderEliminated();
+renderPhases();
+renderCalendar();
+renderRings();
+</script>
+
+</body>
+</html>
